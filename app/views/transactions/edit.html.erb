@@ -1,0 +1,34 @@
+<%= error_messages_for :transaction %>
+
+<% form_for(@transaction) do |f| %>
+<fieldset>
+ <legend>Transaction:</legend>
+  <label for="account_id" class="float"><strong>Account:</strong></label><br />
+    <%= f.text_field :account_id , :id => "account_id", :class => "inp-text", :value => @account_id %>
+    <label for="description" class="float"><strong>Description:</strong></label><br />
+    <%= f.text_field :description, :id => "description", :class => "inp-text"%>
+
+    <label for="itemno" class="float"><strong>ItemNo:</strong></label><br />
+    <%= f.text_field :itemno, :id => "itemno", :class => "inp-text"%>
+
+    <label for="date" class="float"><strong>Date:</strong></label><br />
+    <%= f.date_select :date, :id => "date", :class => "inp-text"%><br />
+
+    <p><b>Fee</b><br />
+    <%= f.check_box :fee, :id => "fee", :class => "choose"%>
+
+    <b>Cleared</b><br />
+    <%= f.check_box :cleared, :id => "cleared", :class => "choose"%>
+</p>
+   <label for="amount" class="float"><strong>Amount:</strong></label><br />
+    <%= f.text_field :amount, :id => "amount", :class => "inp-text"%>
+
+    <label for="category" class="float"><strong>Category:</strong></label><br />
+    <%= f.text_field :category_id, :id => "category", :class => "inp-text"%>
+
+    <%= f.submit "Update" , :class => "submit-button"%>
+
+  </fieldset>
+<% end %>
+
+<%= link_to 'Back', :back %>

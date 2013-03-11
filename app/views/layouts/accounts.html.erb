@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Accounts: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+</head>
+<body>
+	<table width="100%" border=0>
+		<tr>
+			<td colspan=2 align="center"><h1 style="font-size: 3.5em; color: #141C80">Testing RoR</h1></td>
+		</tr>
+		<tr>
+			<td width=20%>
+			</td>
+			<td>
+				<p style="color: green"><%= flash[:notice] %></p>
+
+				<%= yield  %>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<br />
+<% balance = 0%>
+<% @transactions.each do |transaction| %>
+<% balance+=transaction.amount.to_f%>
+<% end %>
+<table width="90%" cellspacing="0" style="border-style:solid; border-width: 10px; border-color: #141C80; border-radius: 15px;">
+    <tr bgcolor="#141C80">
+		<td colspan=3><h1 style="color:#FFFFFF"><%=h @account.name %></h1></td>
+		<td colspan=4><h2 style="color:#FFFFFF">Balance: <%=h balance %></h2></td>
+    </tr>
+	<tr>
+		<th style="border-style:solid; border-width: 1px; border-color: #C0C0C0" width="12.5%">Item No.</th>
+		<th style="border-style:solid; border-width: 1px; border-color: #C0C0C0" width="12.5%">Date</th>
+		<th style="border-style:solid; border-width: 1px; border-color: #C0C0C0" width="50%">Description</th>
+		<th style="border-style:solid; border-width: 1px; border-color: #C0C0C0" width="6.25%">F</th>
+		<th style="border-style:solid; border-width: 1px; border-color: #C0C0C0" width="6.25%">C</th>
+		<th style="border-style:solid; border-width: 1px; border-color: #C0C0C0" width="6.25%">Amount</th>
+		<th style="border-style:solid; border-width: 1px; border-color: #C0C0C0" width="6.25%">Balance</th>
+	</tr>
+<% odd=true%>
+<% balance = 0%>
+<% @transactions.each do |transaction| %>
+<% balance+=transaction.amount.to_f%>
+<% if (odd) %>
+	<tr bgcolor="#90D8E8" onclick="window.location='/transactions/<%=transaction.id%>/edit'">
+<% else %>
+	<tr onClick="window.location='/transactions/<%=transaction.id%>/edit'">
+<% end %>
+		<td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"><%=h transaction.itemno %></td>
+		<td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"><%=h transaction.date %></td>
+	    <td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"><%=h transaction.description %></td>
+	    <td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"><%=h transaction.fee %></td>
+	    <td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"><%=h transaction.cleared %></td>
+	    <td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"><%=h transaction.amount %></td>
+	    <td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"><%=h balance%></td>
+    </tr>
+    <% odd = !odd %>
+<% end %>
+	<tr bgcolor="#90F59C" onclick="window.location='/transactions/new/<%=@account.id%>'">
+		<td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"><br /></td>
+		<td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"></td>
+	    <td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"></td>
+	    <td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"></td>
+	    <td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"></td>
+	    <td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"></td>
+	    <td style="border-style:solid; border-width: 1px; border-color: #C0C0C0"></td>
+    </tr>
+    <tr bgcolor="#141C80">
+		<td colspan=2 align="left"><h3 style="color:#FFFFFF">&lt;&lt;</h3></td>
+		<td colspan=1 align="center">
+			<h3 style="color:#FFFFFF">
+			&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;March&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;
+			</h3>
+		</td>
+		<td colspan=4 align="right"><h3 style="color:#FFFFFF">&gt;&gt;</h3></td>
+    </tr>
+    </table>
+<%= link_to 'Edit Account', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
